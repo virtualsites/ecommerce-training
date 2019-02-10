@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ruleset name="LandingiApiStandard" namespace="Landingi\Api\Standard">
+    <description>Coding standard using PSR2 and modified Object Calisthenics rules</description>
+    <rule ref="PSR2"/>
+    <rule ref="./vendor/object-calisthenics/phpcs-calisthenics-rules/src/ObjectCalisthenics/ruleset.xml"/>
+</ruleset>
