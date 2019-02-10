@@ -14,9 +14,13 @@
         "symfony/yaml": "4.2.*"
     },
     "require-dev": {
+        "behat/behat": "^3.5",
+        "phpspec/phpspec": "^5.1",
+        "phpunit/phpunit": "^8.0",
+        "symfony/dotenv": "4.2.*",
         "symfony/maker-bundle": "^1.0",
-        "symfony/web-server-bundle": "4.2.*",
-        "symfony/dotenv": "4.2.*"
+        "symfony/test-pack": "^1.0",
+        "symfony/web-server-bundle": "4.2.*"
     },
     "config": {
         "preferred-install": {
@@ -52,7 +56,10 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "phpunit": "./vendor/bin/phpunit",
+        "phpspec": "./vendor/bin/phpspec run",
+        "behat": "./vendor/bin/behat --format progress"
     },
     "conflict": {
         "symfony/symfony": "*"
