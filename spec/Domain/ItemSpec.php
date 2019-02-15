@@ -7,7 +7,7 @@ class ItemSpec extends ObjectBehavior
 {
     public function it_is_return_price()
     {
-        $this->beConstructedWith('Item', 15.6);
+        $this->beConstructedWith('Item', 15.60);
         $this->getPrice()->shouldReturn(15.60);
     }
 
