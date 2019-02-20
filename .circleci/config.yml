@@ -5,17 +5,29 @@ jobs:
       - image: circleci/php:7.2-cli-node
     steps:
       - checkout
-      - run: sudo composer self-update
+      - run:
+        name: Update composer itself to the latest version
+        command: sudo composer self-update
       - restore_cache:
           keys:
             - ci-cache-{{ checksum "composer.lock" }}
             - ci-cache-
-      - run: composer install -n --prefer-dist
+      - run:
+        name: Install project dependencies
+        command: php composer.phar install -n --prefer-dist
       - save_cache:
           key: ci-cache-{{ checksum "composer.lock" }}
           paths:
             - ./vendor
-      - run: ./vendor/bin/phpcs src -n --standard=PSR2,CodeSniffRuleset.xml
-      - run: ./vendor/bin/phpstan analyse src -l 7 -c phpstan.neon
-      - run: ./vendor/bin/phpspec run
-      - run: ./vendor/bin/phpunit
+      - run:
+        name: Run Codesniffer tests
+        command: ./vendor/bin/phpcs src -n --standard=PSR2,CodeSniffRuleset.xml
+      - run:
+        name: Run PHPStan tests
+        command: ./vendor/bin/phpstan analyse src -l 7 -c phpstan.neon
+      - run:
+        name: Run PHPSpec tests
+        command: ./vendor/bin/phpspec run
+      - run:
+        name: Run PHPUnit tests
+        command: ./vendor/bin/phpunit
