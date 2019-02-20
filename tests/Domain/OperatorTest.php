@@ -29,6 +29,6 @@ class OperatorTest extends TestCase
         $operator = new Operator($this->cart, true, 50);
         $toArray = $operator->toArray();
         self::assertSame(120.00, $toArray['oldTotal']);
-        self::assertSame(60.00, $toArray['newTotal']);
+        self::assertSame(60.10, $toArray['newTotal']);
     }
 }
