@@ -25,7 +25,7 @@ class CartSpec extends ObjectBehavior
     function it_is_created_with_demo_items()
     {
         $this->beConstructedThrough('withDemonstratedItems');
-        $this->getTotal()->shouldReturn(300.00);
+        $this->getTotal()->shouldReturn(300.01);
     }
 
     /**
