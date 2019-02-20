@@ -5,4 +5,17 @@ jobs:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
-      - run: echo "A first hello"
+      - run: sudo composer self-update
+      - restore_cache:
+          keys:
+            - ci-cache-{{ checksum "composer.lock" }}
+            - ci-cache-
+      - run: composer install -n --prefer-dist
+      - save_cache:
+          key: ci-cache-{{ checksum "composer.lock" }}
+          paths:
+            - ./vendor
+      - run: ./vendor/bin/phpcs src -n --standard=PSR2,CodeSniffRuleset.xml
+      - run: ./vendor/bin/phpstan analyse src -l 7 -c phpstan.neon
+      - run: ./vendor/bin/phpspec run
+      - run: phpunit

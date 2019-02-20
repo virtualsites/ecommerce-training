@@ -1,7 +1,3 @@
 parameters:
     excludes_analyse:
-        - %rootDir%/../../../src/Landingi/*
-        - %rootDir%/../../../src/Infrastructure/Symfony/Security/TokenAuthenticator.php
     ignoreErrors:
-        - '#Cannot cast Ramsey\\Uuid\\UuidInterface to string#'
-        - '#Call to an undefined method object::[a-zA-Z]+\(\)#'

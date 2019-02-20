@@ -62,7 +62,7 @@
         ],
         "codesniffer": "./vendor/bin/phpcs src -n --standard=PSR2,CodeSniffRuleset.xml",
         "phpstan": "./vendor/bin/phpstan analyse src -l 7 -c phpstan.neon",
-        "phpunit": "./vendor/bin/phpunit",
+        "phpunit": "phpunit",
         "phpspec": "./vendor/bin/phpspec run",
         "behat": "./vendor/bin/behat --format progress"
     },
